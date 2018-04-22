@@ -42,6 +42,9 @@ ahcApp.controller('MainCtrl', function MainCtrl($scope,$http, $interval) {
             $http.post("/api/environments",this.environment).then(resp=>{
                 this.addEnvButton="";
                 this.environment.status=true;
+                this.envList.push(this.environment);
+                $scope.environment = this.environment.name;
+                $('#addenvmodal').modal('hide');
             },resp=>{                
                 $scope.addnewenvModal.error = resp.data.error;
                 $scope.addnewenvModal.type="danger";
@@ -55,8 +58,10 @@ ahcApp.controller('MainCtrl', function MainCtrl($scope,$http, $interval) {
     this.addNewAPI = ()=>{
         if(this.addAPIButton === ""){
             this.addAPIButton="disabled";
+            this.api.environment = $scope.environment;
             $http.post("/api/apis",this.api).then(resp=>{
                 this.addAPIButton="";
+                $scope.apilist.push(resp.data)   
             },resp=>{
         
             });

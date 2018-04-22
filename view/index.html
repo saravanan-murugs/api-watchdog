@@ -7,6 +7,7 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
     <script src="js/angular.min.js"></script>
     <script src="js/app.js"></script>
     <title>API Health Check</title>
@@ -90,10 +91,10 @@
                         </div>
                     </div>                    
                     <div class="form-group">
-                        <input ng-show="mc.api.method=='POST'"ng-model="mc.api.data" type="text" class="form-control" id="data" placeholder="data">
+                        <input ng-show="mc.api.method=='POST'" ng-model="mc.api.data" type="text" class="form-control" id="data" placeholder="data">
                     </div>
                     <div class="form-group">
-                        <input ng-model="mc.api.requestContentType" type="text" class="form-control" id="requestContentType" placeholder="Request Content-Type">
+                        <input ng-show="mc.api.method=='POST'" ng-model="mc.api.requestContentType" type="text" class="form-control" id="requestContentType" placeholder="Request Content-Type">
                     </div>
                     <div class="form-group">
                         <input ng-model="mc.api.requestAcceptType" type="text" class="form-control" id="requestAcceptType" placeholder="Expected Response Type">
@@ -137,7 +138,7 @@
                     </form>
                 </div>
                 <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="button" id="addEnvModalClose" class="btn btn-secondary" data-dismiss="modal">Close</button>
                   <button type="button" class="btn btn-primary {{mc.addEnvButton}}" ng-click="mc.addNewEnv()">Add</button>                </div>
               </div>
             
