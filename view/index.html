@@ -90,7 +90,7 @@
                         </div>
                     </div>                    
                     <div class="form-group">
-                        <input ng-model="mc.api.data" type="text" class="form-control" id="data" placeholder="data">
+                        <input ng-show="mc.api.method=='POST'"ng-model="mc.api.data" type="text" class="form-control" id="data" placeholder="data">
                     </div>
                     <div class="form-group">
                         <input ng-model="mc.api.requestContentType" type="text" class="form-control" id="requestContentType" placeholder="Request Content-Type">
@@ -104,7 +104,7 @@
                     <div class="form-group">
                         <input  ng-model="mc.api.statusMessage" type="text" class="form-control" id="statusMessage" placeholder="StatusMessage">
                     </div>
-                    <div class="alert alert-success" role="alert" id="addapialert" ng-show={{false}}>
+                    <div class="alert alert-success" role="alert" id="addapialert" ng-show="false">
                             API details saved successfully
                     </div>
                 </form>
@@ -131,7 +131,7 @@
                         <div class="form-group">
                             <input ng-model="mc.environment.name" type="text" class="form-control" id="data" placeholder="Name">
                         </div>
-                        <div class="alert alert-{{addnewenvModal.type}}" role="alert" ng-show="{{addnewenvModal.alert}}">
+                        <div class="alert alert-{{addnewenvModal.type}}" role="alert" ng-show="addnewenvModal.alert">
                                 {{addnewenvModal.error}}
                         </div>                  
                     </form>

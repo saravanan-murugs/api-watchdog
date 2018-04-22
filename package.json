@@ -14,9 +14,7 @@
     "diskdb": "^0.1.17",
     "express": "^4.16.3",
     "jsonpath": "^1.0.0",
-    "lowdb": "^1.0.0",
     "node-cron": "^1.2.1",
-    "node-schedule": "^1.2.5",
     "request": "^2.83.0"
   }
 }

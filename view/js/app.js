@@ -42,7 +42,10 @@ ahcApp.controller('MainCtrl', function MainCtrl($scope,$http, $interval) {
             $http.post("/api/environments",this.environment).then(resp=>{
                 this.addEnvButton="";
                 this.environment.status=true;
-            },resp=>{
+            },resp=>{                
+                $scope.addnewenvModal.error = resp.data.error;
+                $scope.addnewenvModal.type="danger";
+                $scope.addnewenvModal.alert = true;
                 this.addEnvButton="";
                 console.log("unable to add environment : "+resp.data.error);
                 this.environment.error=false;
@@ -75,8 +78,8 @@ const getAPIObjectTemplate = (environment)=>{
     "url": "",
     "method": "GET",
     "data": "",
-    "requestContentType": "text/xml",
-    "requestAcceptType": "text/xml",
+    "requestContentType": "",
+    "requestAcceptType": "",
     "statusCode": null,
     "statusMessage": "",
     "expectedJsonPath": "",

@@ -14,7 +14,35 @@ router.get('/apis', function (req, res) {
  let arr = db.apis.find(); 
   res.send(arr);
 })
+/*
 
+{
+  "apiname": "MSS Login",
+  "url": "",
+  "method": "GET",
+  "data": "",
+  "requestContentType": "application/json",
+  "requestAcceptType": "application/json",
+  "statusCode": 200,
+  "statusMessage": "OK",
+  "responseContentType": "application/json",
+  "expectedJsonPath": "",
+  "expectedXpath": "",
+  "authType": "none",
+  "oAuthClientId": "",
+  "oAuthClientSecret": "",
+  "oAuthScope": "",
+  "basicAuthString": "",
+  "basicUsername": "",
+  "basicPassword": "",
+  "authorizationHeader": "",
+  "frequency": "",
+  "environment": "production",
+  "rejectUnauthorized": true
+}
+
+
+*/
 
 router.post('/apis', jsonParser,function (req, res) {  
     let apiObj = db.apis.save(req.body);
