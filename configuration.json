@@ -1,0 +1,113 @@
+{
+	"API":[
+		{
+			"msHost":"10.114.41.38",
+			"msPort" : 8080,
+			"org" : "caorg",
+			"msAuthorization" : "Basic bXVydWdzQHVjbGVzLmludGVybmFsOlRoYnMxMjM0",
+			"env":"prod",
+			"apiHost":"10.114.41.38",
+			"apiPort":"9001"
+		}
+	],
+	"MS": [
+		{
+		  "hostname": "10.114.41.38",
+		  "port": 8080,
+		  "path": "/v1/servers/self/up",
+		  "method": "GET"
+		}
+	],
+	"RTR": [
+		{
+		  "hostname": "10.114.41.38",
+		  "port": 8081,
+		  "path": "/v1/servers/self/up",
+		  "method": "GET"
+		}
+	],
+	"MP": [
+		{
+		  "hostname": "10.114.41.38",
+		  "port": 8082,
+		  "path": "/v1/servers/self/up",
+		  "method": "GET"
+		}
+	],
+	"QS": [
+		{
+		  "hostname": "10.114.41.38",
+		  "port": 8083,
+		  "path": "/v1/servers/self/up",
+		  "method": "GET"
+		}
+	],
+	"PS": [
+		{
+		  "hostname": "10.114.41.38",
+		  "port": 8084,
+		  "path": "/v1/servers/self/up",
+		  "method": "GET"
+		}
+	],
+	"AC": [
+		{
+			"hostname" :"10.114.41.38",
+			"status": {
+				"port": 8084,
+				"path": "/v1/servers/self/up",
+				"method": "GET"
+			}
+		}
+	],
+	"AZ": [
+		{
+			"hostname" :"10.114.41.38",
+			"status": {
+				"port": 8084,
+				"path": "/v1/servers/self/up",
+				"method": "GET"
+			}
+		}
+	],
+	"OL": [
+		{
+			"hostname" :"10.114.41.38",
+			"status": {
+				"port": 8084,
+				"path": "/v1/servers/self/up",
+				"method": "GET"
+			}
+		}
+	],
+	"PD": [
+		{
+			"hostname" :"10.114.41.38",
+			"status": {
+				"port": 8084,
+				"path": "/v1/servers/self/up",
+				"method": "GET"
+			}
+		}
+	],
+	"QD": [
+		{
+			"hostname" :"10.114.41.38",
+			"status": {
+				"port": 8084,
+				"path": "/v1/servers/self/up",
+				"method": "GET"
+			}
+		}
+	],
+	"NR": [
+		{
+			"hostname" :"10.114.41.38",
+			"status": {
+				"port": 8084,
+				"path": "/v1/servers/self/up",
+				"method": "GET"
+			}
+		}
+	]
+}

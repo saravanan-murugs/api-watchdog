@@ -1,0 +1,62 @@
+{
+	"MS": [
+		{
+			"isUp": true,
+			"message": "",
+			"opt": {
+				"hostname": "10.114.41.38",
+				"port": 8080,
+				"path": "/v1/servers/self/up",
+				"method": "GET"
+			}
+		}
+	],
+	"RTR": [
+		{
+			"isUp": true,
+			"message": "",
+			"opt": {
+				"hostname": "10.114.41.38",
+				"port": 8081,
+				"path": "/v1/servers/self/up",
+				"method": "GET"
+			}
+		}
+	],
+	"MP": [
+		{
+			"isUp": true,
+			"message": "",
+			"opt": {
+				"hostname": "10.114.41.38",
+				"port": 8082,
+				"path": "/v1/servers/self/up",
+				"method": "GET"
+			}
+		}
+	],
+	"QS": [
+		{
+			"isUp": true,
+			"message": "",
+			"opt": {
+				"hostname": "10.114.41.38",
+				"port": 8083,
+				"path": "/v1/servers/self/up",
+				"method": "GET"
+			}
+		}
+	],
+	"PS": [
+		{
+			"isUp": true,
+			"message": "",
+			"opt": {
+				"hostname": "10.114.41.38",
+				"port": 8084,
+				"path": "/v1/servers/self/up",
+				"method": "GET"
+			}
+		}
+	]
+}

@@ -1,0 +1,22 @@
+{
+  "name": "apigee-one",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "saravanan.murugs@gmail.com",
+  "license": "ISC",
+  "dependencies": {
+    "async-waterfall": "^0.1.5",
+    "body-parser": "^1.18.2",
+    "diskdb": "^0.1.17",
+    "express": "^4.16.3",
+    "jsonpath": "^1.0.0",
+    "lowdb": "^1.0.0",
+    "node-cron": "^1.2.1",
+    "node-schedule": "^1.2.5",
+    "request": "^2.83.0"
+  }
+}

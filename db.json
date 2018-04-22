@@ -1,0 +1,26 @@
+{
+  "apis": [
+    {
+      "url": "https://xplan-api.ucles.internal:8080/json",
+      "method": "POST",
+      "data": "{\"method\":\"XPlanThirdPartyServices.UserLogin\",\"params\":{\"Username\":\"Api\",\"Password\":\")FYW3cqGGmOm\"}}",
+      "requestContentType": "application/json",
+      "requestAcceptType": "application/json",
+      "statusCode": 200,
+      "statusMessage": "OK",
+      "responseContentType": "application/json",
+      "expectedJsonPath": "",
+      "expectedXpath": "",
+      "authType": "none",
+      "oAuthClientId": "",
+      "oAuthClientSecret": "",
+      "oAuthScope":"",
+      "basicAuthString": "",
+      "basicUsername": "",
+      "basicPassword": "",
+      "authorizationHeader": "",
+      "frequency": "",
+      "rejectUnauthorized":false
+    }
+  ]
+}
