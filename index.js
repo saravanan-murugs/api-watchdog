@@ -7,7 +7,6 @@ var api = require('./api')
 const express = require('express')
 const app = express()
 app.use(express.static('view'))
-
 app.use("/api",api)
 
 app.listen(3000, () => console.log('Example app listening on port 3000!'))

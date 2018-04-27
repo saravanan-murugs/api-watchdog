@@ -5,7 +5,7 @@ var db = require('diskdb');
 const fs = require('fs');
 var cron = require('../cron');
 db = db.connect('./db', ['apis','environments']);
-var jsonParser = bodyParser.json();
+var jsonParser = bodyParser.json({limit: '50mb'});
 
 
 // API details apis
@@ -14,6 +14,12 @@ router.get('/apis', function (req, res) {
  let arr = db.apis.find(); 
   res.send(arr);
 })
+
+
+router.post('/postman/import', jsonParser, function (req, res) {
+  let arr = db.apis.find(); 
+   res.send({status:'success'});
+ })
 /*
 
 {

@@ -1,7 +1,8 @@
 # Node build artifacts
 node_modules
 npm-debug.log
-
+db/api.json
+db/environments.json
 # Local development
 *.env
 *.dev

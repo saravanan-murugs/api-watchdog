@@ -4,6 +4,7 @@ ahcApp.controller('MainCtrl', function MainCtrl($scope,$http, $interval) {
     $scope.environment = "";
     $scope.addnewAPIModal = {alert:false,type:"success"}
     $scope.addnewenvModal = {alert:false,type:"success"};
+    $scope.importPostmanModal = {alert:false,type:"success",button:""}
     this.envList = [];
     this.environment = {};
     this.addEnvButton = "";
@@ -11,6 +12,46 @@ ahcApp.controller('MainCtrl', function MainCtrl($scope,$http, $interval) {
         $scope.environment = envName;
     }
     // intialize environments
+    this.importPostman = ()=>{
+        $scope.importPostmanModal.button="disabled";
+        var file = document.getElementById("postmanCollectionFile").files[0];
+        if (file) {
+            var reader = new FileReader();
+            reader.readAsText(file, "UTF-8");
+            reader.onload = function (evt) {
+                try{
+                    $scope.importPostmanModal.alert = true;
+                    $scope.importPostmanModal.type = 'success';
+                    $scope.importPostmanModal.error = 'Valid file. Upload inprogress';
+                    let tmpJson = JSON.parse(evt.target.result)
+                    console.log('success');
+                    $http.post("/api/postman/import",tmpJson).then(resp=>{
+                        $scope.importPostmanModal.error = 'Upload success';
+                        $scope.importPostmanModal.button="";
+                        setTimeout(function(){
+                            $scope.importPostmanModal = {alert:false,type:"success",button:""}
+                            $('#importPostmanModal').modal('hide');
+                        }, 800);                        
+                    },resp=>{                
+                        $scope.importPostmanModal.error = resp.data.error;
+                        $scope.importPostmanModal.type="danger";
+                        $scope.importPostmanModal.alert = true;
+                        $scope.importPostmanModal.button="";
+                        console.log("unable to import postman : "+resp.data.error);
+                    });
+                }catch(err){
+                    $scope.importPostmanModal.alert = true;
+                    $scope.importPostmanModal.type = 'danger';
+                    $scope.importPostmanModal.error = "invalid json";
+                }
+                
+            }
+            reader.onerror = function (evt) {
+                $scope.importPostmanModal.alert = true;
+                    $scope.importPostmanModal.error = "Error occured. Please try again";
+            }
+        }
+    }
     $http.get("/api/environments").then(resp=>{
         this.envList = resp.data
         console.log("env data :"+ JSON.stringify(this.envList));
