@@ -550,8 +550,8 @@ const getAPIStatusGeneric = (reqObj, cb)=>{
 					var statusMessage = "";
 					if((reqObj.statusCode && resp.httpCode == reqObj.statusCode)
 					||(!reqObj.statusCode && resp.httpCode == 200)){
-						if((reqObj.statusMessage && resp.httpMessage == reqObj.statusMessage)
-						|| (!reqObj.statusMessage && resp.httpMessage == reqObj.statusMessage)){
+						if((reqObj.statusMessage && resp.httpMessage === reqObj.statusMessage)
+						|| (!reqObj.statusMessage && resp.httpMessage === "OK")){
 							status =  true;
 						}else{
 							status =  false;

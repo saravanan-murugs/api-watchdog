@@ -44,10 +44,19 @@ router.get('/apis', function (req, res) {
 
 */
 
-router.post('/apis', jsonParser,function (req, res) {  
+router.post('/apis', jsonParser,function (req, res) {
+  console.log(JSON.stringify(req.body));
+  if(!req.body.apiname){
+    res.status(400).send({error:"api name required"});
+  }else if(!req.body.url){
+    res.status(400).send({error:"api url required"});
+  }else if(db.environments.findOne({apiname:req.body.apiname})){
+    res.status(400).send({error:"api already exists"});
+  }else{  
     let apiObj = db.apis.save(req.body);
     cron.scheduleNewAPICheck(apiObj);
      res.send(apiObj);
+  }
 })
 
 // Environment apis

@@ -2,6 +2,7 @@ var ahcApp = angular.module('ahcApp', []);
 ahcApp.controller('MainCtrl', function MainCtrl($scope,$http, $interval) {
     $scope.apilist = [];
     $scope.environment = "";
+    $scope.addnewAPIModal = {alert:false,type:"success"}
     $scope.addnewenvModal = {alert:false,type:"success"};
     this.envList = [];
     this.environment = {};
@@ -58,12 +59,31 @@ ahcApp.controller('MainCtrl', function MainCtrl($scope,$http, $interval) {
     this.addNewAPI = ()=>{
         if(this.addAPIButton === ""){
             this.addAPIButton="disabled";
+            if(!this.api.apiname){
+                $scope.addnewAPIModal.error = "api name required";
+                $scope.addnewAPIModal.type="danger";
+                $scope.addnewAPIModal.alert = true;
+                this.addAPIButton="";
+                return false;
+            }
+            if(!this.api.url){
+                $scope.addnewAPIModal.error = "api url required";
+                $scope.addnewAPIModal.type="danger";
+                $scope.addnewAPIModal.alert = true;
+                this.addAPIButton="";
+                return false;
+            }
             this.api.environment = $scope.environment;
             $http.post("/api/apis",this.api).then(resp=>{
                 this.addAPIButton="";
-                $scope.apilist.push(resp.data)   
+                this.api = getAPIObjectTemplate($scope.environment);
+                $scope.apilist.push(resp.data)  
+                $('#addapimodal').modal('hide'); 
             },resp=>{
-        
+                $scope.addnewAPIModal.error = "Error Occurred : "+resp.data.error;
+                $scope.addnewAPIModal.type="danger";
+                $scope.addnewAPIModal.alert = true;
+                this.addAPIButton="";
             });
         }
     }
@@ -99,8 +119,7 @@ const getAPIObjectTemplate = (environment)=>{
     "authorizationHeader": "",
     "frequency": "",
     "environment": environment,
-    "rejectUnauthorized": false,
-    "_id": "78b42913b3ef404aa6254656d023b076"
+    "rejectUnauthorized": false
     };
       return api;
 }
