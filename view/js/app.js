@@ -2,6 +2,7 @@ var ahcApp = angular.module('ahcApp', []);
 ahcApp.controller('MainCtrl', function MainCtrl($scope,$http, $interval) {
     $scope.apilist = [];
     $scope.environment = "";
+    $scope.apiErrorLog = {};
     $scope.addnewAPIModal = {alert:false,type:"success"}
     $scope.addnewenvModal = {alert:false,type:"success"};
     $scope.importPostmanModal = {alert:false,type:"success",button:""}
@@ -25,7 +26,7 @@ ahcApp.controller('MainCtrl', function MainCtrl($scope,$http, $interval) {
                     $scope.importPostmanModal.error = 'Valid file. Upload inprogress';
                     let tmpJson = JSON.parse(evt.target.result)
                     console.log('success');
-                    $http.post("/api/postman/import",tmpJson).then(resp=>{
+                    $http.post("/api/postman/import?environment="+$scope.environment,tmpJson).then(resp=>{
                         $scope.importPostmanModal.error = 'Upload success';
                         $scope.importPostmanModal.button="";
                         setTimeout(function(){
@@ -100,7 +101,7 @@ ahcApp.controller('MainCtrl', function MainCtrl($scope,$http, $interval) {
     this.addNewAPI = ()=>{
         if(this.addAPIButton === ""){
             this.addAPIButton="disabled";
-            if(!this.api.apiname){
+            if(!this.api.name){
                 $scope.addnewAPIModal.error = "api name required";
                 $scope.addnewAPIModal.type="danger";
                 $scope.addnewAPIModal.alert = true;
@@ -118,7 +119,7 @@ ahcApp.controller('MainCtrl', function MainCtrl($scope,$http, $interval) {
             $http.post("/api/apis",this.api).then(resp=>{
                 this.addAPIButton="";
                 this.api = getAPIObjectTemplate($scope.environment);
-                $scope.apilist.push(resp.data)  
+               // $scope.apilist.push(resp.data)  
                 $('#addapimodal').modal('hide'); 
             },resp=>{
                 $scope.addnewAPIModal.error = "Error Occurred : "+resp.data.error;
@@ -140,27 +141,12 @@ ahcApp.controller('MainCtrl', function MainCtrl($scope,$http, $interval) {
 
 const getAPIObjectTemplate = (environment)=>{
    let api=  {
-    "apiname": "",
-    "url": "",
-    "method": "GET",
-    "data": "",
-    "requestContentType": "",
-    "requestAcceptType": "",
-    "statusCode": null,
-    "statusMessage": "",
-    "expectedJsonPath": "",
-    "expectedXpath": "",
-    "authType": "none",
-    "oAuthClientId": "",
-    "oAuthClientSecret": "",
-    "oAuthScope": "",
-    "basicAuthString": "",
-    "basicUsername": "",
-    "basicPassword": "",
-    "authorizationHeader": "",
-    "frequency": "",
-    "environment": environment,
-    "rejectUnauthorized": false
+        "name": "",
+        "url": "",
+        "method": "GET",
+        "data": "",
+        "contentType": "",
+        "environment": environment
     };
       return api;
 }

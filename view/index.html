@@ -7,6 +7,7 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/index.css">
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
     <script src="js/angular.min.js"></script>
     <script src="js/app.js"></script>
@@ -49,15 +50,21 @@
               <div class ="row">
                 <div class="col-sm-6 col-lg-3 font-weight-bold" ng-repeat="api in apilist | filter: {environment:environment}:strict">
                     <div class="card mt-2" style="max-width: 18rem;">
-                        <div class="card-header">{{api.apiname}}</div>
+                        <div class="card-header">{{api.name}}</div>
                         <div class="card-body">
                             <a class="card-title" href="{{api.url}}" target="_blank">{{api.url | limitTo:40}}</a>
-                            <p class="card-text mt-3">Health</p>
-                            <div class="alert bg-success mt-3" role="alert" ng-show="api.serverStatus">
+                            <p class="card-text mt-3 text-success" ng-show="api.currentStatus">Health : Good</p>
+                            <p class="card-text mt-3 text-danger" ng-show="!api.currentStatus">Health : Bad</p>
+                            <!-- <div class="alert bg-success mt-3" role="alert" ng-show="api.currentStatus">
                                     
                             </div>
-                            <div class="alert bg-danger mt-3" role="alert" ng-show="!api.serverStatus">
+                            <div class="alert bg-danger mt-3" role="alert" ng-show="!api.currentStatus">
                                     
+                            </div> -->
+                            <p class="card-text mt-3">Last 10 hours:</p>
+                            <div class="stacked-bar-graph">
+                                <span data-toggle="modal" data-target="#showLogsModal" style="width:10%" ng-repeat="status in api.status" ng-click="apiErrorLog.statusCode=status.statusCode" class="hbar {{status.statusCode === 200?'bg-success':'bg-danger'}}"></span>
+                                            
                             </div>
                         </div>
                     </div>
@@ -77,7 +84,7 @@
             <div class="modal-body">
                 <form>
                     <div class="form-group">
-                        <input ng-model="mc.api.apiname" type="text" class="form-control" id="apiname" aria-describedby="apinamehelp" placeholder="Enter Api Name">                    
+                        <input ng-model="mc.api.name" type="text" class="form-control" id="apiname" aria-describedby="apinamehelp" placeholder="Enter Api Name">                    
                     </div>
                     <div class="form-group">
                             <div class="input-group">
@@ -92,19 +99,10 @@
                         </div>
                     </div>                    
                     <div class="form-group">
-                        <input ng-show="mc.api.method=='POST'" ng-model="mc.api.data" type="text" class="form-control" id="data" placeholder="data">
+                        <input ng-show="mc.api.method=='POST'" ng-model="mc.api.body" type="text" class="form-control" id="data" placeholder="data">
                     </div>
                     <div class="form-group">
-                        <input ng-show="mc.api.method=='POST'" ng-model="mc.api.requestContentType" type="text" class="form-control" id="requestContentType" placeholder="Request Content-Type">
-                    </div>
-                    <div class="form-group">
-                        <input ng-model="mc.api.requestAcceptType" type="text" class="form-control" id="requestAcceptType" placeholder="Expected Response Type">
-                    </div>
-                    <div class="form-group">
-                        <input ng-model="mc.api.statusCode" type="text" class="form-control" id="statusCode" placeholder="StatusCode">
-                    </div>
-                    <div class="form-group">
-                        <input  ng-model="mc.api.statusMessage" type="text" class="form-control" id="statusMessage" placeholder="StatusMessage">
+                        <input ng-show="mc.api.method=='POST'" ng-model="mc.api.contentType" type="text" class="form-control" id="requestContentType" placeholder="Request Content-Type">
                     </div>
                     <div class="alert alert-{{addnewAPIModal.type}}" ng-show="addnewAPIModal.alert" role="alert" id="addapialert">
                       {{addnewAPIModal.error}}
@@ -174,6 +172,29 @@
             
             </div>
           </div>
+          <div class="modal fade" id="showLogsModal" tabindex="-1" role="dialog" aria-labelledby="showLogsModalTitle" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="showLogsModalTitle">API Response details</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  
+                  <div class="modal-body">      
+                      <form>                                
+                          <div class="form-group">
+                              <label type="text" class="form-control"> {{apiErrorLog.statusCode}}</label>
+                          </div>                 
+                      </form>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" id="addEnvModalClose" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+              
+              </div>
+            </div>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

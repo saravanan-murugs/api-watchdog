@@ -1,0 +1,427 @@
+{
+	"info": {
+		"_postman_id": "9ae4a60c-1947-c3d9-321b-0c3d0d73258f",
+		"name": "Systopia",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "get Entries",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "systopia Y2FtYnJpZGdlYXNzZXNzbWVudGFwaSFjRzl5ZEMxdGIzVnVkR0ZwYmkxbk1HeGshMjAxOC0wMy0wNVQxMzowNToxMy4wMDAwMTIyKzAxOjAw"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \"bookingReference\": \"120898\", \"membersName\": \"sample\", \"cardNumber\": \"336551132773\", \"email\": \"336551132773@cambridgeassessment.org.uk\", \"validFrom\": \"2018-03-02T00:00:00\", \"subsidyId\":3 }"
+				},
+				"url": {
+					"raw": "https://cambridgeassessmentuat.systopiacloud.com/api/entry?id=336551132773&token=YXBpa2V5PWRyMXZlLXBpbi1wYWludCZ0b2tlbj1ZekJtWm1WbExYQnlhVzUwTFhOMFlYST0mZGF0ZXRpbWU9MjAxOC0wMy0wNVQxMzowNToxMy4wMDAwMTIyKzAxOjAw",
+					"protocol": "https",
+					"host": [
+						"cambridgeassessmentuat",
+						"systopiacloud",
+						"com"
+					],
+					"path": [
+						"api",
+						"entry"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "336551132773"
+						},
+						{
+							"key": "token",
+							"value": "YXBpa2V5PWRyMXZlLXBpbi1wYWludCZ0b2tlbj1ZekJtWm1WbExYQnlhVzUwTFhOMFlYST0mZGF0ZXRpbWU9MjAxOC0wMy0wNVQxMzowNToxMy4wMDAwMTIyKzAxOjAw"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "post entries",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "systopia Y2FtYnJpZGdlYXNzZXNzbWVudHVhdCFkbUZzYkdWNUxXMXZibWwwYjNJdGMzY3hkR05vITIwMTgtMDItMTRUMTU6MjA6MzUuMDAwMDcxNSswMTowMA=="
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \"bookingReference\": \"120471\",\n\"membersName\": \"77909844-fe7b-164a-a6e2-758f840f7f09\",\n\"cardNumber\": \"336551132773\", \n\"email\": \"336551132773@cambridgeassessment.org.uk\",\n\"validFrom\": \"2018-02-14T00:00:00\", \n\"subsidyId\":3 }"
+				},
+				"url": {
+					"raw": "https://cambridgeassessmentapiuat.systopiacloud.com/api/entry?token=YXBpa2V5PWgxbGwtc2NyZWVuLXBsdWcmdG9rZW49Y0RGNFlYTm9MV1JsYzJzdGRtVnVaQT09JmRhdGV0aW1lPTIwMTgtMDItMTRUMTU6MjA6MzUuMDAwMDcxNSswMTowMA==",
+					"protocol": "https",
+					"host": [
+						"cambridgeassessmentapiuat",
+						"systopiacloud",
+						"com"
+					],
+					"path": [
+						"api",
+						"entry"
+					],
+					"query": [
+						{
+							"key": "token",
+							"value": "YXBpa2V5PWgxbGwtc2NyZWVuLXBsdWcmdG9rZW49Y0RGNFlYTm9MV1JsYzJzdGRtVnVaQT09JmRhdGV0aW1lPTIwMTgtMDItMTRUMTU6MjA6MzUuMDAwMDcxNSswMTowMA=="
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Put Entry",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Systopia Y2FtYnJpZGdlYXNzZXNzbWVudHVhdCFkbUZzYkdWNUxXMXZibWwwYjNJdGMzY3hkR05vITIwMTgtMDEtMDVUMDk6Mzg6NDUuMDAwMDA5OSswMTowMA=="
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \"bookingReference\": \"1658\",\n\"membersName\": \"Grant Kelsal\", \n\"cardNumber\": \"171996500273\", \n\"email\": \"171996500273@cambridgeassessment.org.uk\",\n\"dailyCreditLimit\": 1.0,\n\"validFrom\": \"2018-01-06T00:00:00\",\n\"subsidyId\":1 \n  \n}"
+				},
+				"url": {
+					"raw": "https://cambridgeassessmentapiuat.systopiacloud.com/api/Entry?id=171996500273&token=YXBpa2V5PWgxbGwtc2NyZWVuLXBsdWcmdG9rZW49Y0RGNFlYTm9MV1JsYzJzdGRtVnVaQT09JmRhdGV0aW1lPTIwMTgtMDEtMDVUMDk6Mzg6NDUuMDAwMDA5OSswMTowMA==",
+					"protocol": "https",
+					"host": [
+						"cambridgeassessmentapiuat",
+						"systopiacloud",
+						"com"
+					],
+					"path": [
+						"api",
+						"Entry"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "171996500273"
+						},
+						{
+							"key": "token",
+							"value": "YXBpa2V5PWgxbGwtc2NyZWVuLXBsdWcmdG9rZW49Y0RGNFlYTm9MV1JsYzJzdGRtVnVaQT09JmRhdGV0aW1lPTIwMTgtMDEtMDVUMDk6Mzg6NDUuMDAwMDA5OSswMTowMA=="
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Put Entry -prod",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "bbc922a9-26f5-4f53-98a5-9c8768a5ec86",
+						"type": "text/javascript",
+						"exec": [
+							"console.log(\"my script\");",
+							"",
+							"const apikey = \"dr1ve-pin-paint\";    ",
+							"const token = \"c0ffee-print-star\";",
+							"const username = \"cambridgeassessmentapi\";",
+							"const password = \"port-mountain-g0ld\";",
+							"const tokenEncode = btoa(token);",
+							"const passwordEncode = btoa(password);",
+							"",
+							"console.log(tokenEncode);",
+							"//const mil = context.getVariable('client.sent.end.timestamp');",
+							"const date = new Date();",
+							"var hour = \"0\"+ date.getHours();",
+							"hour = hour.substr(-2,2);",
+							"var minutes = \"0\"+ date.getMinutes();",
+							"minutes = minutes.substr(-2,2);",
+							"var seconds = \"0\"+date.getSeconds();",
+							"seconds = seconds.substr(-2,2);",
+							"var millisec = \"000000\"+ date.getMilliseconds();",
+							"millisec = millisec.substr(-7,7);",
+							"var day = \"0\"+date.getDate(); ",
+							"day = day.substr(-2,2);",
+							"var month = 1+date.getMonth(); ",
+							"month = \"0\"+month; ",
+							"month = month.substr(-2,2);",
+							"var year = date.getFullYear(); ",
+							"//const dateString = '2018-01-05T08:05:45.2974389+01:00';",
+							"const dateString = year+'-'+month+'-'+day+'T'+hour+':'+minutes+':'+seconds+'.'+millisec+\"+01:00\";",
+							"console.log(dateString);",
+							"const tokenString = 'apikey='+apikey+'&token='+tokenEncode+'&datetime='+dateString;",
+							"const tokenStringEncode = btoa(tokenString);",
+							"",
+							"const authString = username+'!'+passwordEncode+'!'+dateString;",
+							"",
+							"const authStringEncode =btoa(authString);",
+							"",
+							"console.log('authString  ' + \"systopia \"+authStringEncode);",
+							"console.log('tokenString  '+ tokenStringEncode);",
+							"",
+							"",
+							"pm.variables.set(\"systopiaAuthString\", \"systopia \"+authStringEncode)",
+							"pm.variables.set(\"systopiaTokenString\", tokenStringEncode);",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{systopiaAuthString}}"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \"bookingReference\": \"120471\",\n\"membersName\": \"Visitor\",\n\"cardNumber\": \"336551119539\", \n\"email\": \"336551119539@cambridgeassessment.org.uk\",\n\"validFrom\": \"2018-04-10T00:00:00\",\n\"subsidyId\":3\n}"
+				},
+				"url": {
+					"raw": "https://cambridgeassessmentapi.systopiacloud.com/api/Entry?id=336551119539&token={{systopiaTokenString}}",
+					"protocol": "https",
+					"host": [
+						"cambridgeassessmentapi",
+						"systopiacloud",
+						"com"
+					],
+					"path": [
+						"api",
+						"Entry"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "336551119539"
+						},
+						{
+							"key": "token",
+							"value": "{{systopiaTokenString}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "post entries -prod",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "840f5611-4faa-40bf-91ac-0d241122d099",
+						"type": "text/javascript",
+						"exec": [
+							"console.log(\"my script\");",
+							"",
+							"const apikey = \"dr1ve-pin-paint\";    ",
+							"const token = \"c0ffee-print-star\";",
+							"const username = \"cambridgeassessmentapi\";",
+							"const password = \"port-mountain-g0ld\";",
+							"const tokenEncode = btoa(token);",
+							"const passwordEncode = btoa(password);",
+							"",
+							"console.log(tokenEncode);",
+							"//const mil = context.getVariable('client.sent.end.timestamp');",
+							"const date = new Date();",
+							"var hour = \"0\"+ date.getHours();",
+							"hour = hour.substr(-2,2);",
+							"var minutes = \"0\"+ date.getMinutes();",
+							"minutes = minutes.substr(-2,2);",
+							"var seconds = \"0\"+date.getSeconds();",
+							"seconds = seconds.substr(-2,2);",
+							"var millisec = \"000000\"+ date.getMilliseconds();",
+							"millisec = millisec.substr(-7,7);",
+							"var day = \"0\"+date.getDate(); ",
+							"day = day.substr(-2,2);",
+							"var month = 1+date.getMonth(); ",
+							"month = \"0\"+month; ",
+							"month = month.substr(-2,2);",
+							"var year = date.getFullYear(); ",
+							"//const dateString = '2018-01-05T08:05:45.2974389+01:00';",
+							"const dateString = year+'-'+month+'-'+day+'T'+hour+':'+minutes+':'+seconds+'.'+millisec+\"+01:00\";",
+							"console.log(dateString);",
+							"const tokenString = 'apikey='+apikey+'&token='+tokenEncode+'&datetime='+dateString;",
+							"const tokenStringEncode = btoa(tokenString);",
+							"",
+							"const authString = username+'!'+passwordEncode+'!'+dateString;",
+							"",
+							"const authStringEncode =btoa(authString);",
+							"",
+							"console.log('authString  ' + \"systopia \"+authStringEncode);",
+							"console.log('tokenString  '+ tokenStringEncode);",
+							"",
+							"",
+							"pm.variables.set(\"systopiaAuthString\", \"systopia \"+authStringEncode)",
+							"pm.variables.set(\"systopiaTokenString\", tokenStringEncode);",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{systopiaAuthString}}"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \"bookingReference\": \"120471\",\n\"membersName\": \"Visitor\",\n\"cardNumber\": \"111111111111\", \n\"email\": \"111111111111@cambridgeassessment.org.uk\",\n\"validFrom\": \"2018-04-10T00:00:00\"\n}"
+				},
+				"url": {
+					"raw": "https://cambridgeassessmentapi.systopiacloud.com/api/entry?token={{systopiaTokenString}}",
+					"protocol": "https",
+					"host": [
+						"cambridgeassessmentapi",
+						"systopiacloud",
+						"com"
+					],
+					"path": [
+						"api",
+						"entry"
+					],
+					"query": [
+						{
+							"key": "token",
+							"value": "{{systopiaTokenString}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get Entries - prod",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "a79cb289-d8f1-4cf9-87e4-c96ac7d8d7f6",
+						"type": "text/javascript",
+						"exec": [
+							"console.log(\"my script\");",
+							"",
+							"const apikey = \"dr1ve-pin-paint\";    ",
+							"const token = \"c0ffee-print-star\";",
+							"const username = \"cambridgeassessmentapi\";",
+							"const password = \"port-mountain-g0ld\";",
+							"const tokenEncode = btoa(token);",
+							"const passwordEncode = btoa(password);",
+							"",
+							"console.log(tokenEncode);",
+							"//const mil = context.getVariable('client.sent.end.timestamp');",
+							"const date = new Date();",
+							"var hour = \"0\"+ date.getHours();",
+							"hour = hour.substr(-2,2);",
+							"var minutes = \"0\"+ date.getMinutes();",
+							"minutes = minutes.substr(-2,2);",
+							"var seconds = \"0\"+date.getSeconds();",
+							"seconds = seconds.substr(-2,2);",
+							"var millisec = \"000000\"+ date.getMilliseconds();",
+							"millisec = millisec.substr(-7,7);",
+							"var day = \"0\"+date.getDate(); ",
+							"day = day.substr(-2,2);",
+							"var month = 1+date.getMonth(); ",
+							"month = \"0\"+month; ",
+							"month = month.substr(-2,2);",
+							"var year = date.getFullYear(); ",
+							"//const dateString = '2018-01-05T08:05:45.2974389+01:00';",
+							"const dateString = year+'-'+month+'-'+day+'T'+hour+':'+minutes+':'+seconds+'.'+millisec+\"+01:00\";",
+							"console.log(dateString);",
+							"const tokenString = 'apikey='+apikey+'&token='+tokenEncode+'&datetime='+dateString;",
+							"const tokenStringEncode = btoa(tokenString);",
+							"",
+							"const authString = username+'!'+passwordEncode+'!'+dateString;",
+							"",
+							"const authStringEncode =btoa(authString);",
+							"",
+							"console.log('authString  ' + \"systopia \"+authStringEncode);",
+							"console.log('tokenString  '+ tokenStringEncode);",
+							"",
+							"",
+							"pm.variables.set(\"systopiaAuthString\", \"systopia \"+authStringEncode)",
+							"pm.variables.set(\"systopiaTokenString\", tokenStringEncode);",
+							"",
+							"",
+							"",
+							"//pm.environment.set(\"systopiaAuthString\", \"systopia \"+authStringEncode);",
+							"//pm.environment.set(\"systopiaTokenString\", tokenStringEncode);"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{systopiaAuthString}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \"bookingReference\": \"120898\", \"membersName\": \"sample\", \"cardNumber\": \"336551132773\", \"email\": \"336551132773@cambridgeassessment.org.uk\", \"validFrom\": \"2018-03-02T00:00:00\", \"subsidyId\":3 }"
+				},
+				"url": {
+					"raw": "https://cambridgeassessmentapi.systopiacloud.com/api/entry?id=336551119539&token={{systopiaTokenString}}",
+					"protocol": "https",
+					"host": [
+						"cambridgeassessmentapi",
+						"systopiacloud",
+						"com"
+					],
+					"path": [
+						"api",
+						"entry"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "336551119539"
+						},
+						{
+							"key": "token",
+							"value": "{{systopiaTokenString}}"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -1,97 +1,17 @@
-//var express = require('express');
-//var request = require('request');
-const fs = require('fs');
-const waterfall = require('async-waterfall');
-const cs = require('./component-status');
-const apiUtil = require('./api-status');
-const util =  require('./util');
-const schedule = require('node-schedule');
-const express = require('express');
-const app = express();
-const config = JSON.parse(fs.readFileSync("configuration.json"));
-const opt = {ms:config.MS,rtr:config.RTR,mp:config.MP,qs:config.QS,ps:config.PS};
-/*
-cs(opt, (compStatus)=>{
-	var js = JSON.stringify(compStatus, null, '\t');
-	fs.writeFileSync("output.json", js, 'utf-8');
-});*/
-console.log("detecting configuraiton.json");
-if(!fs.existsSync("./one-apigee-temp.json")){
-	throw {"error" : "configuraiton.json file is missing"};
-}
-console.log("detecting one-apigee-temp.json");
-if(!fs.existsSync("./one-apigee-temp.json")){
-	fs.writeFileSync("./one-apigee-temp.json", {"envSetupDone":false});
-}
+var util = require('./util');
+var fs = require('fs');
+var url = require('url');
+// var collection = JSON.parse(fs.readFileSync('./SnAPI.postman_collection.json'))
+// //var collection = JSON.parse(fs.readFileSync('./Systopia.postman_collection.json'))
 
-let oneTemp = fs.readFileSync('./one-apigee-temp.json');
-oneTemp = JSON.parse(oneTemp);
+// console.log(collection.item.length)
 
-let heartbeatJob;
+// var map = util.normalizePostmanCollection(collection,[]);
 
-waterfall([
-	(callback)=>{
-		if(!oneTemp.envSetupDone){
-			let copt = config.API[0];
-			let pOpt = {
-				"host":copt.msHostname,
-				"port":copt.msPort,
-				"authorization" : copt.msAuthorization,
-				"org":copt.org,
-				"env":copt.env
-			}
-			apiUtil.setPrerequisites(pOpt,(err, status)=>{
-				if(status){
-					callback(null);
-				}else{
-					callback(err,null);
-				}
-			})
-		}
-	},
-	(callback)=>{
-		heartbeatJob = schedule.scheduleJob('*/2 * * * *', function(){
+// fs.writeFileSync('./output.json',JSON.stringify(map))
 
-		});
-	}
-],(err,result)=>{
+// console.log(map.length);
 
-})
+var obj = url.parse("https://www.goog.comv1/people/assessor?type=DATE_RANGE&startDateTime=2016-12-01T00:00:01&endDateTime=2017-06-01T00:00:01&aspUid&lastName&firstName&emailId&dob&gender&page&limit=1")
 
-const apiOpt = {
-		  "hostname": "10.114.41.38",
-		  "port": 8080,
-		  //"path": "/v1/one-apigee/token?grant_type=client_credentials",
-		 // "method": "GET",
-		  "headers":{
-				"Authorization" :"Basic QXZjNUIwM2FveEI3cVlpbjFtcW83WmozQkRIWGxTdHg6NWRkTU01RDZtZUdBbWh0dg=="
-		  }
-		}
-
-//api("10.114.41.38",8080,"caorg","one_apigee",(rs)=>{console.log(rs)});
-//opt.msHost,opt.msPort,opt.org,opt.msAuthorization
- const pOpt = {
-	 "msHost":"10.114.41.38",
-	 "msPort" : 8080,
-	 "org" : "caorg",
-	 "msAuthorization" : "Basic bXVydWdzQHVjbGVzLmludGVybmFsOlRoYnMxMjM0",
-	 "env":"prod",
-	 "apiHost":"10.114.41.38",
-	 "apiPort":"9001"
- }
-
-
-var j = schedule.scheduleJob('*/1 * * * *', function(){
-  console.log('Today is recognized by Rebecca Black!');
-});
-
-
-app.get('/', (req, res) => res.send('Hello World!'))
-
-app.listen(3000, () => console.log('Example app listening on port 3000!'))
-/*
-util.httpCall(apiOpt, (res)=>{
-	console.log(res.body);
-	console.log(res.httpCode);
-	console.log(res.httpMessage);
-})*/
+console.log(JSON.stringify(obj.query));
